@@ -2,7 +2,7 @@
     $namaserver="localhost";
     $userdb="root";
     $passdb="";
-    $namadb="tutorialphp";
+    $namadb="kkp";
     //$url='http://localhost/informasi_display/';
     $koneksi=mysqli_connect($namaserver,$userdb,$passdb,$namadb);
 

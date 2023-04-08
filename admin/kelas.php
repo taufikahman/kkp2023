@@ -27,7 +27,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Kelas</h1>
+            <h1>Data Jasa</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -60,9 +60,9 @@
                   <tr>
 				<?php 
 				include 'koneksi.php';
-				$sql = mysql_query("SELECT * FROM kelas ORDER BY kelas") or die(mysql_error());
+				$sql = mysqli_query($koneksi,"SELECT * FROM kelas ORDER BY kelas") or die(mysql_error());
 				$no=0;
-				while($data = mysql_fetch_array($sql))
+				while($data = mysqli_fetch_array($sql))
 				{
 				$no++;
 				$id=$data['id_kelas'];
@@ -91,7 +91,7 @@
 				  for($i=0; $i<$jumlah; $i++) {
 					$id = $ide[$i];
 					
-					$simpan = mysql_query("DELETE FROM kelas WHERE id_kelas='$id'") or die(mysql_error());
+					$simpan = mysqli_query($koneksi,"DELETE FROM kelas WHERE id_kelas='$id'") or die(mysql_error());
 				  }
 					if($simpan)
 						{
@@ -164,8 +164,8 @@
 				for($i=0; $i<$jumlah; $i++){
 				$id = $ide[$i];
 				
-				$query = mysql_query("SELECT * FROM kelas WHERE id_kelas='$id'");
-				$data = mysql_fetch_array($query);
+				$query = mysqli_query($koneksi,"SELECT * FROM kelas WHERE id_kelas='$id'");
+				$data = mysqli_fetch_array($query);
 				
 				?>
                   <div class="form-group">

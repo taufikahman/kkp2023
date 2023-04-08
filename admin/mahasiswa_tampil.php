@@ -27,7 +27,7 @@
       <div class="container-fluid">
         <div class="row mb-2">
           <div class="col-sm-6">
-            <h1>Data Mahasiswa</h1>
+            <h1>Data User Members</h1>
           </div>
         </div>
       </div><!-- /.container-fluid -->
@@ -50,45 +50,44 @@
                   <thead>
                   <tr>
                     <th>No</th>
-					<th>NIM</th>
-					<th>Nama</th>
-					<th>Tempat</th>
-					<th>Tanggal Lahir</th>
+					<th>Kode Member</th>
+					<th>Nama Member</th>
 					<th>Alamat</th>
-					<th>Kelas</th>
-					<th>File</th>
-					<th>Aksi</th>
+					<th>PIC</th>
+					<th>Kota</th>
+					<th>Telepon</th>
+					<th>Email</th>
+					<th>No Rekening</th>
+          <th>Atas Nama Rekening</th>
+          <th>Nama Bank</th>
+          <th>Status</th>
                   </tr>
                   </thead>
                   <tbody>
                   <tr>
 				<?php 
 				include 'koneksi.php';
-				$sql = mysqli_query($koneksi,"SELECT * FROM mahasiswa ORDER BY nama") or die(mysql_error());
+				$sql = mysqli_query($koneksi,"SELECT * FROM member ORDER BY nama_member") or die(mysql_error());
 				$no=0;
 				while($data = mysqli_fetch_array($sql))
 				{
 				$no++;
 				$id=$data['id'];
-				$file=$data['file'];
+				// $file=$data['file']; 
 				
 					?>
 					<td><?php echo $no; ?></td>
-					<td><?php echo $data['nim']; ?></td>
-					<td><?php echo $data['nama']; ?></td>
-					<td><?php echo $data['tempat']; ?></td>
-					<td><?php echo $data['tgl_lahir']; ?></td>
+					<td><?php echo $data['kode_member']; ?></td>
+					<td><?php echo $data['nama_member']; ?></td>
 					<td><?php echo $data['alamat']; ?></td>
-					<td><?php echo $data['kelas']; ?></td>
-					<?php 
-					if($file=='')
-					{
-					?>
-					<td><a href="poto/default.png"><div class="col-md-8"><img src="poto/default.png" width="100" ></a></td>
-					<?php } else { ?>
-					
-					<td><a href="poto/<?php echo $data['file']; ?>"><div class="col-md-8"><img src="poto/<?php echo $data['file']; ?>" width="100" ></a></td>
-					<?php }?>
+					<td><?php echo $data['pic']; ?></td>
+					<td><?php echo $data['kota']; ?></td>
+					<td><?php echo $data['telepon']; ?></td>
+          <td><?php echo $data['email']; ?></td>
+          <td><?php echo $data['no_rekening']; ?></td>
+          <td><?php echo $data['atas_nama_rekening']; ?></td>
+          <td><?php echo $data['nama_bank']; ?></td>
+          <td><?php echo $data['status']; ?></td>
 					<td>
 						<a href ="mahasiswa_edit.php<?php echo '?id=' . $id; ?>"><button type="submit" class="btn btn-warning">Edit</button><a> 
 						<a href="#" type="button" class="btn btn-danger"  title="Hapus Data" data-toggle="modal" data-target="#myModal4<?php echo $id; ?>">Hapus</a>
@@ -112,7 +111,7 @@
 												<div class="form-group">
 													<div class="form-line">
 														<input type="hidden" class="form-control" name="id"  value="<?php echo $data['id']; ?>" />
-														<label> Yakin ingin menghapus Mahasiswa <?php echo $data['nama']; ?> ? </label>
+														<label> Yakin ingin menghapus data member <?php echo $data['nama']; ?> ? </label>
 													</div>
 												</div>										
 												<div class="modal-footer">  
